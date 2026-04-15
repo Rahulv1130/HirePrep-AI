@@ -202,7 +202,7 @@ async function generatePdfFromHtml(htmlContent) {
         "--disable-dev-shm-usage"
       ]
     });
-    console.log()
+    
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })
 
@@ -253,7 +253,7 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
 
     const pdfBuffer = await generatePdfFromHtml(jsonContent.html);
 
-    return pdfBuffer
+    return pdfBuffer;
 
 }
 
