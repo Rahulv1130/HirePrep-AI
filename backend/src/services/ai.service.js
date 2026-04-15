@@ -2,6 +2,7 @@ import { GoogleGenAI } from '@google/genai'
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import puppeteer from 'puppeteer'
+import path from "node:path";
 
 let ai = null;
 
@@ -194,14 +195,27 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
 
 
 async function generatePdfFromHtml(htmlContent) {
-    const browser = await puppeteer.launch({
-      headless: "new",
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage"
-      ]
-    });
+  if (!process.env.PUPPETEER_CACHE_DIR) {
+    process.env.PUPPETEER_CACHE_DIR = path.join(process.cwd(), ".cache", "puppeteer");
+  }
+
+  const executablePath =
+    process.env.PUPPETEER_EXECUTABLE_PATH ||
+    puppeteer.executablePath();
+
+  console.log("Chrome path:", executablePath);
+
+  const browser = await puppeteer.launch({
+    executablePath,
+    headless: "new",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage"
+    ]
+  });
+
+  console.log(browser);
     
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })
