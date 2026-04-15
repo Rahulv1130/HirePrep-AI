@@ -83,3 +83,7 @@ Because auth uses cookies, production hosting needs correct CORS + cookie settin
 - `GET /api/interview/report/:interviewId` – get report by id (requires auth)
 - `POST /api/interview/resume/pdf/:interviewReportId` – generate resume PDF (requires auth)
 
+<img width="960" height="412" alt="Register Page" src="https://github.com/user-attachments/assets/c4a633cb-2bc9-4ef7-b1bc-4d856f3cdb51" />
+<img width="847" height="540" alt="Home Page" src="https://github.com/user-attachments/assets/5e05a35d-3c23-4796-9b6f-91f4fcc19a08" />
+<img width="960" height="540" alt="Report Page" src="https://github.com/user-attachments/assets/5ee53f27-2a6d-4ee5-9ebe-03d80206fa12" />
+
