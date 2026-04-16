@@ -20,5 +20,7 @@ app.set("trust proxy", 1);
 app.use("/api/auth", authRouter)
 app.use("/api/interview", interviewRouter);
 
+app.get("/test", (req, res) => res.send("Server Working Fine !!"));
+
 
 export default app;
